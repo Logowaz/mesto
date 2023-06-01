@@ -28,4 +28,4 @@
 
 * Использование сервиса оптимизации изображений
 
-* [Ссылка на GitHub Pages]()
+* [Ссылка на GitHub Pages](https://logowaz.github.io/mesto/)
