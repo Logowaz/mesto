@@ -10,6 +10,7 @@
   opacity: 1;
   transition: opacity .3s ease-out .1s;
   padding-right: 27px;
+  cursor: pointer;
 }
   
 .elements__button-like:hover {
