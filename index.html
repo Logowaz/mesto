@@ -10,7 +10,6 @@
 <body class="page">
     <header class="header">
         <img src="./images/header-logo.svg" class="header__logo" alt="логотип Место">
-        <div class="header__line"></div>
     </header>
     <main class="content">
         <section class="profile">
@@ -19,7 +18,7 @@
                 <div class="profile__info">
                     <div class="profile__title">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
-                        <button  button type="button" class="profile__edit-button"></button>
+                        <button type="button" class="profile__edit-button"></button>
                     </div>
                     <p class="profile__job">Исследователь океана</p>
                 </div>
@@ -28,51 +27,51 @@
         </section>
         <section class="elements">
             <ul class="elements__cards">
-                <li><figure class="elements__element">
+                <li><article class="elements__element">
                         <img class="elements__photo" src="./images/elements-karachaevsk.png" alt="Изображение церкви в г. Карачаевск">
-                        <figcaption class="elements__caption">
+                        <div class="elements__caption">
                             <p class="elements__name">Карачаевск</p>
-                            <button type="button" class="elements__button-like elements__button-like_active"></button>
-                        </figcaption>
-                    </figure>
+                            <button type="button" class="elements__button-like"></button>
+                        </div>
+                    </article>
                 </li>
-                <li><figure class="elements__element">
+                <li><article class="elements__element">
                         <img class="elements__photo" src="./images/elements-dombai1.png" alt="Изображение гор Домбая">
-                        <figcaption class="elements__caption">
+                        <div class="elements__caption">
                             <p class="elements__name">Домбай</p>
-                            <button type="button" class="elements__button-like elements__button-like_active"></button>
-                        </figcaption>
-                    </figure></li>
-                <li><figure class="elements__element">
+                            <button type="button" class="elements__button-like"></button>
+                        </div>
+                    </article></li>
+                <li><article class="elements__element">
                         <img class="elements__photo" src="./images/elements-dombai2.png" alt="Изображение лесов и гор Домбая">
-                        <figcaption class="elements__caption">
+                        <div class="elements__caption">
                             <p class="elements__name">Домбай</p>
-                            <button type="button" class="elements__button-like elements__button-like_active"></button>
-                        </figcaption>
-                    </figure>
+                            <button type="button" class="elements__button-like"></button>
+                        </div>
+                    </article>
                 </li>
-                <li><figure class="elements__element">
+                <li><article class="elements__element">
                         <img class="elements__photo" src="./images/elements-karachaevsk.png" alt="Изображение церкви в г. Карачаевск">
-                        <figcaption class="elements__caption">
+                        <div class="elements__caption">
                             <p class="elements__name">Карачаевск</p>
-                            <button type="button" class="elements__button-like elements__button-like_active"></button>
-                        </figcaption>
-                    </figure>
+                            <button type="button" class="elements__button-like"></button>
+                        </div>
+                    </article>
                 </li>
-                <li><figure class="elements__element">
+                <li><article class="elements__element">
                         <img class="elements__photo" src="./images/elements-dombai1.png" alt="Изображение гор Домбая">
-                        <figcaption class="elements__caption">
+                        <div class="elements__caption">
                             <p class="elements__name">Домбай</p>
-                            <button type="button" class="elements__button-like elements__button-like_active"></button>
-                        </figcaption>
-                    </figure></li>
-                <li><figure class="elements__element">
+                            <button type="button" class="elements__button-like"></button>
+                        </div>
+                    </article></li>
+                <li><article class="elements__element">
                         <img class="elements__photo" src="./images/elements-dombai2.png" alt="Изображение лесов и гор Домбая">
-                        <figcaption class="elements__caption">
+                        <div class="elements__caption">
                             <p class="elements__name">Домбай</p>
-                            <button type="button" class="elements__button-like elements__button-like_active"></button>
-                        </figcaption>
-                    </figure>
+                            <button type="button" class="elements__button-like"></button>
+                        </div>
+                    </article>
                 </li>
             </ul>
         </section>
@@ -85,8 +84,8 @@
           <form name="info" class="form">
             <h2 class="form__title">Редактировать профиль</h2>
             <fieldset class="form__input">
-                <input type="text" name="name" class="form__item form__item_name">
-                <input type="text" name="name" class="form__item form__item_job">
+                <input type="text" name="name" class="form__item form__item_type_name">
+                <input type="text" name="name" class="form__item form__item_type_job">
               </fieldset>
             <button type="submit" class="form__submit">Сохранить</button>
           </form>

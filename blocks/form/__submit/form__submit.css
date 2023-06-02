@@ -9,6 +9,7 @@
   border-radius: 2px;
   transition: opacity .3s ease-in-out;
   opacity: 1;
+  cursor: pointer;
 }
   
 .form__submit:hover {

@@ -5,16 +5,16 @@ let profileName = document.querySelector('.profile__name');
 let profileJob = document.querySelector('.profile__job');
 
 // Находим форму в DOM
-let formInput = popup.querySelector('.popup__container');
+let formInput = popup.querySelector('.form');
 // Находим поля формы в DOM
-let nameInput = formInput.querySelector('.form__item_name');
-let jobInput = formInput.querySelector('.form__item_job');
-console.log(nameInput.value);
-console.log(jobInput.textContent);
+let nameInput = formInput.querySelector('.form__item_type_name');
+let jobInput = formInput.querySelector('.form__item_type_job');
+//console.log(nameInput.value);
+//console.log(jobInput.textContent);
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
-console.log(profileJob);
-console.log(profileName);
+//console.log(profileJob);
+//console.log(profileName);
 
 function editButton() {
   popup.classList.add('popup_opened');
