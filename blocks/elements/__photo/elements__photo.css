@@ -1,9 +1,10 @@
 .elements__photo {
-    max-width: 282px;
-    min-height: 282px;
-    border-radius: 10px 10px 0 0;
-    object-fit: cover;
-  }
+  width: 282px;
+  height: 282px;
+  border-radius: 10px 10px 0 0;
+  object-fit: cover;
+  object-position: center;
+}
   
 /* @media screen and (max-width: 620px) {
     .elements__photo {
