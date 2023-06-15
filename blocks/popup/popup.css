@@ -5,8 +5,12 @@
     left: 0;
     min-height: 100%;
     min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: rgba(0, 0, 0, .5);
-    visibility: hidden;
+    /* visibility: hidden; */
     opacity: 0;
-    transition: visibility 0s, opacity .35s linear;
+    transition: opacity .35s linear;
+    pointer-events: none;
 }
