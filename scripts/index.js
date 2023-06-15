@@ -1,3 +1,5 @@
+//Массив с данными для исходных карточек
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -39,6 +41,8 @@ const nameInputAddProf = addCard.querySelector('.form__item_type_place-name');
 const linkInputAddProf = addCard.querySelector('.form__item_type_link');
 const addCardButton = document.querySelector('.profile__add-button');
 
+const CardFullscreen = document.querySelector('.popup_opencardfullscreen');
+
 const popupButtonClose = document.querySelectorAll('.popup__button-close');
 
 const profileName = document.querySelector('.profile__name');
@@ -60,11 +64,13 @@ function closePopup(popup) {
 }
 
 
-//Функция создания карточки
+
+
+//Cоздания карточки
 
 const createCard = (card) => {
   const cardElement = templateCards.querySelector('.elements__element').cloneNode(true);
-  const cardPhoto = cardElement.querySelector('elements__photo');
+  const thisphoto = cardElement.querySelector('.elements__photo');
   const cardName = cardElement.querySelector('elements__name');
   cardElement.querySelector('.elements__photo').src = card.link;
   cardElement.querySelector('.elements__photo').alt = card.name;
@@ -80,43 +86,36 @@ const createCard = (card) => {
     const deleteCard = evt.target.closest('.elements__element');
     deleteCard.remove();
   });
-
-  // cardPhoto.addEventListener('click', (evt) => {
-  //   const thisImage = evt.target;
-  //   popupCardFullscreen.classList.add('popup_opened');
-  //   popupCardFullscreen.querySelector('.popup__card-photo').src = thisImage.src;
-  //   popupCardFullscreen.querySelector('.popup__card-location').textContent = thisImage.alt;
-  // });
-
+ 
+  
+  thisphoto.addEventListener('click', (evt) => {
+    const thisImage = evt.target;
+    openPopup(CardFullscreen);
+    CardFullscreen.querySelector('.popup__card-photo').src = thisImage.src;
+    CardFullscreen.querySelector('.popup__card-name').textContent = thisImage.alt;
+  });
+  
   return cardElement;
 };
+
+//Подготовка места для новых карточек 
 
 const renderCard = (card, container) => {
   elementsCards.prepend(createCard(card));
 }
 
+//Перебор массива и подготовка добавления исходных карт
+
 initialCards.forEach((item) => {
   renderCard(item, elementsCards);
 });
 
-//Реализация закрытия попапов
 
-const close = (closeCurrentPopup) => {
-  closeCurrentPopup.addEventListener('click', function (evt) {
-    const currentPopup = evt.target.closest('.popup');
-    closePopup(currentPopup);
-  });
-};
-
-popupButtonClose.forEach(close);
-
-
-// Открытие попапа для добавление карточки 
+// Открытие попапа для добавление карточки
 
 addCardButton.addEventListener('click', createNewCard => {
   openPopup(addCard);
 });
-
 
 
 //Добавление новой карточки
@@ -130,6 +129,16 @@ function addNewCard (evt) {
 
 addCard.addEventListener('submit', addNewCard);
 
+//Реализация закрытия попапов
+
+const close = (closeCurrentPopup) => {
+  closeCurrentPopup.addEventListener('click', function (evt) {
+    const currentPopup = evt.target.closest('.popup');
+    closePopup(currentPopup);
+  });
+};
+
+popupButtonClose.forEach(close);
 
 //Попап добавления профиля
 
