@@ -1,4 +1,8 @@
 import {initialCards} from './cards.js';
+import {validationConf} from './constants.js';
+import disabledButton from './validation.js';
+
+
 
 const elements = document.querySelector('.elements');
 const elementsCards = elements.querySelector('.elements__cards');
@@ -32,14 +36,14 @@ const popupCardFullscreenName = popupCardFullscreen.querySelector('.popup__card-
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closeEsc);
+  document.addEventListener('keydown', closeByEsc);
 };
 
 //Функция закрытия попапа
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closeEsc);
+  document.removeEventListener('keydown', closeByEsc);
 }
 
 
@@ -95,14 +99,21 @@ addCardButton.addEventListener('click', createNewCard => {
 });
 
 
+// const disableSubmitButton = popupAddCard.querySelector('.form__submit');
+
+
 //Добавление новой карточки
 
 function addNewCard (evt) {
   evt.preventDefault();
-  renderCard({name: nameInputAddCard.value, link: linkInputAddCard.value});
+  const CardName = nameInputAddCard.value;
+  const CardLink = linkInputAddCard.value;
+
+  renderCard({ name: CardName, link: CardLink });
   evt.target.reset();
-  closePopup(popupAddCard);
-};
+  const submitButton = evt.target.querySelector('.form__submit');
+  disabledButton(submitButton, validationConf);
+}
 
 formInputAddCard.addEventListener('submit', addNewCard);
 
@@ -121,13 +132,13 @@ popupButtonClose.forEach(close);
 
 //Попап добавления профиля
 
-function editButton() {
+function openPupupEditProfile() {
   openPopup(popupEditProfile);
   nameInputEditProf.value = profileNameEditProf.textContent;
   jobInputEditProf.value = profileJobEditProf.textContent;
 }
 
-editProfileButton.addEventListener('click', editButton);
+editProfileButton.addEventListener('click', openPupupEditProfile);
 
 function handleFormSubmitEditProf (evt) {
   evt.preventDefault();
@@ -148,7 +159,7 @@ document.body.addEventListener('click', function (evt) {
 
 // Закрытие попапа нажатием на Esc
 
-function closeEsc(evt) {
+function closeByEsc(evt) {
   if (evt.key === 'Escape') {
     const openedPopup = document.querySelector('.popup_opened');
     closePopup(openedPopup);

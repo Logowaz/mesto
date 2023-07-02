@@ -10,7 +10,7 @@
   transition: opacity .3s ease-in-out;
   opacity: 1;
   cursor: pointer;
-  margin-top: 50px;
+  margin-top: 20px;
 }
   
 .form__submit:hover {
