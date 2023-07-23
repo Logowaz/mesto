@@ -1,4 +1,4 @@
-export const validationConf = {
+const validationConf = {
     formSelector: '.form',
     inputSelector: '.form__item',
     submitButtonSelector: '.form__submit',
@@ -6,3 +6,5 @@ export const validationConf = {
     inputErrorClass: 'form__item_type_error',
     errorClass: 'popup__error_visible'
   }; 
+
+export {validationConf};
