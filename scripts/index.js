@@ -7,19 +7,19 @@ import { FormValidator } from './FormValidator.js';
 const elements = document.querySelector('.elements');
 const elementsCards = elements.querySelector('.elements__cards');
 
-const popupEditProfile = document.querySelector('.popup_editprofile');
+const popupEditProfile = document.querySelector('.popup_edit-profile');
 const formInputEditProf = popupEditProfile.querySelector('.form');
 // const formEditProfile = document.querySelector('.form_editProfile');
 // const formAddProfile = document.querySelector('.form_addprofile');
 const nameInputEditProf = formInputEditProf.querySelector('.form__item_type_name');
 const jobInputEditProf = formInputEditProf.querySelector('.form__item_type_job');
-const editProfileButton = document.querySelector('.profile__edit-button');
+const buttonOpenPopupProfile = document.querySelector('.profile__edit-button');
 
 const popupAddCard = document.querySelector('.popup_addcard');
 const formInputAddCard = popupAddCard.querySelector('.form');
 const nameInputAddCard = formInputAddCard.querySelector('.form__item_type_place-name');
 const linkInputAddCard = formInputAddCard.querySelector('.form__item_type_link');
-const addCardButton = document.querySelector('.profile__add-button');
+const buttonOpenPopupaddCard = document.querySelector('.profile__add-button');
 
 export const popupCardFullscreen = document.querySelector('.popup_opencardfullscreen');
 
@@ -60,10 +60,10 @@ initialCards.forEach((item) => {
 
 function addNewCard (evt) {
   evt.preventDefault();
-  const CardName = nameInputAddCard.value;
-  const CardLink = linkInputAddCard.value;
+  const cardName = nameInputAddCard.value;
+  const cardLink = linkInputAddCard.value;
 
-  renderCard({ name: CardName, link: CardLink });
+  renderCard({ name: cardName, link: cardLink });
   evt.target.reset();
   // const submitButton = evt.target.querySelector('.form__submit');
   closePopup(popupAddCard);
@@ -90,11 +90,11 @@ function closePopup(popup) {
 
 // Открытие попапа для добавление карточки
 
-addCardButton.addEventListener('click', createNewCard => {
+buttonOpenPopupaddCard.addEventListener('click', createNewCard => {
   openPopup(popupAddCard);
 });
 
-//Реализация закрытия попапов
+//Реализация закрытия попаповs
 const closecurrentPopup = (evt) => {
   const currentPopup = evt.target.closest('.popup');
   closePopup(currentPopup);
@@ -115,7 +115,7 @@ function openPupupEditProfile() {
   jobInputEditProf.value = profileJobEditProf.textContent;
 }
 
-editProfileButton.addEventListener('click', openPupupEditProfile);
+buttonOpenPopupProfile.addEventListener('click', openPupupEditProfile);
 
 function handleFormSubmitEditProf (evt) {
   evt.preventDefault();
