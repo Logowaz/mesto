@@ -33,13 +33,13 @@ class FormValidator {
       }
     }
   
-    _disabledButton() {
+    disabledButton() {
         this._buttonSubmit.disabled = true;
         this._buttonSubmit.classList.add(this._inactiveButtonClass);
     }
     
- 
-    _enabledButton() {
+
+    enabledButton() {
         this._buttonSubmit.disabled = false;
         this._buttonSubmit.classList.remove(this._inactiveButtonClass);
     }
@@ -48,9 +48,9 @@ class FormValidator {
     _toggleButtonState() {
         const checkValid = this._formElement.checkValidity();
         if (!checkValid) {
-        this._disabledButton();
+        this.disabledButton();
       } else {
-        this._enabledButton();
+        this.enabledButton();
       }
     }
   

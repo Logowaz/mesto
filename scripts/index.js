@@ -32,6 +32,13 @@ const templateCards = document.querySelector('#template-cards').content;
 export const popupCardFullscreenPhoto = popupCardFullscreen.querySelector('.popup__card-photo');
 export const popupCardFullscreenName = popupCardFullscreen.querySelector('.popup__card-name');
 
+
+const validationProfile = new FormValidator(validationConf, formInputEditProf);
+validationProfile.enableValidation();
+
+const validationNewCard = new FormValidator(validationConf, formInputAddCard);
+validationNewCard.enableValidation();
+
 // console.log(formInputAddCard.checkValidity());
 
 //Cоздания карточки
@@ -90,7 +97,8 @@ function closePopup(popup) {
 
 // Открытие попапа для добавление карточки
 
-buttonOpenPopupaddCard.addEventListener('click', createNewCard => {
+buttonOpenPopupaddCard.addEventListener('click', () => {
+  validationNewCard.disabledButton();
   openPopup(popupAddCard);
 });
 
@@ -148,8 +156,3 @@ function closeByEsc(evt) {
 // console.log(formInputEditProf);
 // console.log(FormValidator);
 
-const validationProfile = new FormValidator(validationConf, formInputEditProf);
-validationProfile.enableValidation();
-
-const validationNewCard = new FormValidator(validationConf, formInputAddCard);
-validationNewCard.enableValidation();
