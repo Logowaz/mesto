@@ -121,6 +121,7 @@ function openPupupEditProfile() {
   openPopup(popupEditProfile);
   nameInputEditProf.value = profileNameEditProf.textContent;
   jobInputEditProf.value = profileJobEditProf.textContent;
+  validationProfile.disabledButton();
 }
 
 buttonOpenPopupProfile.addEventListener('click', openPupupEditProfile);
