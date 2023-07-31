@@ -46,6 +46,7 @@
 @import url(../blocks/popup/__photocontainer/popup__photocontainer.css);
 @import url(../blocks/popup/__error/popup__error.css);
 @import url(../blocks/popup/__error/_visible/popup__error_visible.css);
+@import url(../blocks/content/content.css);
 
 
 

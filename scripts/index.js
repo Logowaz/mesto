@@ -98,7 +98,9 @@ function closePopup(popup) {
 // Открытие попапа для добавление карточки
 
 buttonOpenPopupaddCard.addEventListener('click', () => {
+  // validationNewCard.resetValidationState();
   validationNewCard.disabledButton();
+  validationNewCard.resetValidation();
   openPopup(popupAddCard);
 });
 
@@ -119,9 +121,11 @@ popupButtonClose.forEach(close);
 
 function openPupupEditProfile() {
   openPopup(popupEditProfile);
+  // validationProfile.resetValidationState();
   nameInputEditProf.value = profileNameEditProf.textContent;
   jobInputEditProf.value = profileJobEditProf.textContent;
   validationProfile.disabledButton();
+  validationProfile.resetValidation();
 }
 
 buttonOpenPopupProfile.addEventListener('click', openPupupEditProfile);
