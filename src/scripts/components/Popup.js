@@ -2,21 +2,24 @@ export default class Popup {
     constructor(popupSelector) {
         this.popupElement = document.querySelector(popupSelector);
         this.buttonClose = this.popupElement.querySelector('.popup__button-close');
-        this._handleEscClose = this._handleEscClose.bind(this);
     }
   
-  //Универсальная функция открытие попапов
+  //Функция открытие попапов
 
     openPopup() {
         this.popupElement.classList.add('popup_opened');
-        document.addEventListener('keydown', this._handleEscClose);
+        document.addEventListener('keydown', (evt) => {
+            this._handleEscClose(evt);
+        });
     };
 
-  //Универсальная функция закрытия попапов
+  //Функция закрытия попапов
 
     closePopup() {
         this.popupElement.classList.remove('popup_opened');
-        document.removeEventListener('keydown', this._handleEscClose);
+        document.removeEventListener ('keydown', (evt) => {
+            this._handleEscClose(evt);
+        });
     };
   
     _handleEscClose(evt) {
@@ -25,7 +28,7 @@ export default class Popup {
         }
     }
   
-  //Слушатели событий клика закрытия попапа по крестику и по клику в облсти оверлея
+  //Слушатели событий клика закрытия попапа по иконке закрытия и при клике на затемнённую область вокруг формы
 
     setEventListeners() {
         this.buttonClose.addEventListener('click', () => {

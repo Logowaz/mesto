@@ -30,4 +30,6 @@
 
 * Валидация форм
 
+* Сборка проектка.Webpack
+
 * [Ссылка на GitHub Pages](https://logowaz.github.io/mesto/)

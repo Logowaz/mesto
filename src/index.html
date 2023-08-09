@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
+    <!-- <link rel="stylesheet" href="./pages/index.css"> -->
     <title>Место</title>
 </head>
 <body class="page">
     <header class="header">
-        <img src="./images/header-logo.svg" class="header__logo" alt="логотип Место">
+        <img src="<%=require('./images/header-logo.svg')%>" class="header__logo" alt="логотип Место">
     </header>
     <main class="content">
         <section class="profile">
             <div class="profile__about-place">
-                <img class="profile__avatar" src="./images/profile-avatar.png" alt="аватар пользователя">
+                <img class="profile__avatar" src="<%=require('./images/profile-avatar.png')%>" alt="аватар пользователя">
                 <div class="profile__info">
                     <div class="profile__title">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -52,8 +52,8 @@
         <div class="popup__container">
           <form name="info" class="form form_addprofile">
             <h2 class="form__title">Новое место</h2>
-            <input type="text" placeholder="Название" name="place-name" class="form__item form__item_type_place-name" minlength="2" maxlength="30" required>
-            <span id="place-name-error" class="popup__error"></span>
+            <input type="text" placeholder="Название" name="name" class="form__item form__item_type_place-name" minlength="2" maxlength="30" required>
+            <span id="name-error" class="popup__error"></span>
             <input type="url" placeholder="Ссылка на картинку" name="link" class="form__item form__item_type_link" required>
             <span id="link-error" class="popup__error"></span>
             <button type="submit" class="form__submit">Создать</button>
@@ -86,8 +86,6 @@
             </article>
         </li>
     </template>
-    <script type="module" src="./pages/index.js"></script>
-    <!-- <script type="module" src="./scripts/Card.js"></script>
-    <script type="module" src="./scripts/FormValidator.js"></script> -->
+    <!-- <script type="module" src="./pages/index.js"></script> -->
 </body>
 </html>
