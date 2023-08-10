@@ -38,7 +38,7 @@ const cardSection = new Section({data: initialCards, renderer:
 }, '.elements__cards');
 
 function handleCardClick(name, link) {
-  popupFullscreen.openPopup(name, link);
+  popupFullscreen.open(name, link);
 }
 
 //Рендер карточек
@@ -47,7 +47,7 @@ cardSection.renderItems();
 
 function addNewCard (item) {
   const card = new Card(item, '#template-cards',
-  () => handleCardClick(item.name, item.link));
+  (name, link) => popupFullscreen.open(name, link));
   return card.generateCard();
 };
 
@@ -66,7 +66,7 @@ popupProfileEdit.setEventListeners();
 //Открытие попапа редактирования профиля
 buttonOpenPopupProfile.addEventListener('click', () => {
   validationProfile.resetValidation();
-  popupProfileEdit.openPopup();
+  popupProfileEdit.open();
   const {name, job} = userInfo.getUserInfo();
   nameInputEditProf.value = name;
   jobInputEditProf.value = job;
@@ -76,7 +76,7 @@ buttonOpenPopupProfile.addEventListener('click', () => {
 
 const popupFormAddCard = new PopupWithForm ({popupSelector: '.popup_addcard', 
 handleSubmitForm: (data) => {
-  popupFormAddCard.closePopup();
+  popupFormAddCard.close();
   cardSection.renderNewCard(data);
 }});
 
@@ -86,7 +86,7 @@ popupFormAddCard.setEventListeners();
 
 buttonOpenPopupaddCard.addEventListener('click', () => {
   validationNewCard.resetValidation();
-  popupFormAddCard.openPopup();
+  popupFormAddCard.open();
 });
 
 //Создание экземаляра класса FormValidator и включение валидации для форм
