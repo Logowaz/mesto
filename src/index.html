@@ -73,13 +73,26 @@
         </div>
     </div>
 
+    <div class="popup popup_confirm">
+        <div class="popup__container">
+          <form name="info" class="form form_confirm">
+            <h3 class="form__title">Вы уверены?</h3>
+            <button type="submit" class="form__submit form__submit-confirm">Да</button>
+          </form>
+          <button type="button" class="popup__button-close"></button>
+        </div>
+      </div>
+
     <template id="template-cards">
         <li>
             <article class="elements__element">
                 <img class="elements__photo" src="#" alt="...">
                 <div class="elements__caption">
                     <h2 class="elements__name">Имя</h2>
-                    <button type="button" class="elements__button-like"></button>
+                    <div class="elements__like-place">
+                        <button type="button" class="elements__button-like"></button>
+                        <p class="elements__like-counter">0</p>
+                    </div>
                 </div>
                 <button type="button" class="elements__card-delete"></button>
             </article>
