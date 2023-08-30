@@ -32,6 +32,11 @@ const templateCards = document.querySelector('#template-cards').content;
 export const popupCardFullscreenPhoto = popupCardFullscreen.querySelector('.popup__card-photo');
 export const popupCardFullscreenName = popupCardFullscreen.querySelector('.popup__card-name');
 
+const popupFullscreen = new PopupWithImage('.popup_opencardfullscreen');
+
+popupFullscreen.setEventListeners();
+
+
 //Создание экземпляра класса Api
 const api = new Api(configApi);
 // console.log(api);
@@ -53,7 +58,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 
  //Функция созадния карточек
 function addNewCard(item, userId) {
-  const card = new Card(item, '#template-cards', () => handleCardClick(item.name, item.link), userId,
+  const card = new Card(item, '#template-cards', (name, link) => handleCardClick(name, link), userId,
   {handleDeleteIconClick: (cardId) => {
     popupConfirmDelete.open();
     popupConfirmDelete.handleConfirm(() => {
@@ -83,6 +88,8 @@ function handleCardClick(name, link) {
   popupFullscreen.open(name, link);
 }
 
+
+
 //Создание экземпляра класса Секшин для отображения в секции карточкек
 const cardSection = new Section({renderer:
   (item) => {cardSection.addItem(addNewCard(item, userId));}
@@ -102,10 +109,6 @@ const userInfo = new UserInfo ({profileName: '.profile__name', profileJob: '.pro
 const popupConfirmDelete = new PopupWithConfirm ('.popup_confirm');
 // popupConfirmDelete.setEventListeners();
 
-
-//Создание экземпляра класса попапа открытия карточек на весь экран
-const popupFullscreen = new PopupWithImage('.popup_opencardfullscreen');
-popupFullscreen.setEventListeners();
 
 
 function handleSubmitFormAdd(formData) {
@@ -141,6 +144,11 @@ validationNewCard.enableValidation();
 
 
 
+
+
+// function handleCardClick(name, link) {
+//   popupFullscreen.open(name, link);
+// }
 
 
 
