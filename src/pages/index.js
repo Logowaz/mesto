@@ -129,6 +129,16 @@ const popupFormAddCard = new PopupWithForm ({popupSelector: '.popup_addcard', ha
 
 popupFormAddCard.setEventListeners();
 
+// //Открытие попапа добавления новой карточки
+
+buttonOpenPopupaddCard.addEventListener('click', () => {
+  validationNewCard.resetValidation();
+  popupFormAddCard.open();
+});
+
+const validationNewCard = new FormValidator(validationConf, formInputAddCard);
+validationNewCard.enableValidation();
+
 
 
 
@@ -200,6 +210,7 @@ popupFormAddCard.setEventListeners();
 //   validationNewCard.resetValidation();
 //   popupFormAddCard.open();
 // });
+
 
 // //Создание экземаляра класса FormValidator и включение валидации для форм
 
