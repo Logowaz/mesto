@@ -23,7 +23,6 @@ export class Api {
     //Запросить информацию о пользователе с сервера
     getUserInfo() {
         return fetch('https://nomoreparties.co/v1/cohort-73/users/me', {
-            method: 'GET',
             headers: {authorization: 'e01b1331-b93c-4514-b189-6f6d94874ecd'}
         })
             .then(this.#onResponce)
@@ -49,8 +48,8 @@ export class Api {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
-                name: data.nameuser,
-                about: data.jobuser
+                name: data.name,
+                about: data.job
             })
         })
             .then(this.#onResponce)

@@ -12,6 +12,10 @@
 @import url(../blocks/profile/__job/profile__job.css);
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__title/profile__title.css);
+@import url(../blocks/profile/__avatar-place/profile__avatar-place.css);
+@import url(../blocks/profile/__button-avatar/profile__button-avatar.css);
+
+
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/__button-like/elements__button-like.css);
 @import url(../blocks/elements/__caption/elements__caption.css);
@@ -43,6 +47,7 @@
 @import url(../blocks/form/__item/_type/form__item_type_error.css);
 @import url(../blocks/form/__submit/_disabled/form__submit_disabled.css);
 @import url(../blocks/form/submit-confirm/form__submit-confirm.css);
+@import url(../blocks/form/__title/_no-paddig/form__title_no-paddig.css);
 
 
 
