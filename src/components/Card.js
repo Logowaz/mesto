@@ -12,7 +12,7 @@ export default class Card {
     this._likeDelete = likeDelete;
     this._likeAdd = likeAdd;
   //Поиск лайков, которые принадлежат текущему пользователю
-    this._liked = data.likes.find((user) => user._id === userId);
+    this._liked = data.likes.some((user) => user._id === userId);
   }
 
   _getTemplate() {
@@ -34,24 +34,12 @@ export default class Card {
     this._cardPhoto.alt = this._name;
     this._cardName.textContent = this._name;
     this._likesCounter = this._element.querySelector('.elements__like-counter');
-    this._likesCounter.textContent = this._likes.length;
     if (this._ownerId !== this._userId)
         this._buttonDelete.remove();
-    this._cardIsLiked();
+    this.changeLikeState();
     this._setEventListeners();
     return this._element;
   };
-
-  // _handleLikeClick() {
-  //   this._buttonLike.classList.toggle('elements__button-like_active');
-  // };
-
-  // _openFullScreenImage() {
-  //   popupCardFullscreenPhoto.src = this._link;
-  //   popupCardFullscreenPhoto.alt = this._name;
-  //   popupCardFullscreenName.textContent = this._name;
-  //   openPopup(popupCardFullscreen);
-  // };
 
   _setEventListeners() {
     this._buttonLike.addEventListener('click', () => {
@@ -71,11 +59,6 @@ export default class Card {
     });
   };
   
-  _handleDeleteCardClick() {
-    this._element.remove();
-    this._element = null;
-  }
-  
   //Удаление карточки
   deleteCard() {
     this._element.remove();
@@ -85,13 +68,20 @@ export default class Card {
   //Установка счтечика лайков
   setLikesCount(arr) {
     this._likes = arr.likes;
-    this._likesCounter.textContent = this._likes.length;
-    this._buttonLike.classList.toggle('elements__button-like_active');
+    this.changeLikeState();
   }
-  //Если пользователь ставил лайк, то при первоначальном рендеринге страницы лайки пользователя закрасятся
-  _cardIsLiked() {
-    if (this._liked) {
+
+  _findUserLike() {
+    return this._likes.some((user) => user._id === this._userId);
+  }
+  
+  changeLikeState() {
+    this._likesCounter.textContent = this._likes.length;
+    const userLike = this._findUserLike();
+    if (userLike) {
       this._buttonLike.classList.add('elements__button-like_active');
+    } else {
+      this._buttonLike.classList.remove('elements__button-like_active');
     }
   }
 

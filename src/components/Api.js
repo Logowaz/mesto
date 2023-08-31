@@ -33,10 +33,7 @@ export class Api {
         return fetch(this._url, {
             method: 'POST',
             headers: this._headers,
-            body: JSON.stringify({
-                name: data.name,
-                link: data.link
-            })
+            body: JSON.stringify(data)
         })
             .then(this.#onResponce)
     }
@@ -57,7 +54,6 @@ export class Api {
 
     //Записать обновленный аватар пользователя на сервер
     setAvatar(data) {
-        console.log(data)
         return fetch('https://mesto.nomoreparties.co/v1/cohort-73/users/me/avatar', {
             method: 'PATCH',
             headers: this._headers,

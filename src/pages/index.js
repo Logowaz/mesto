@@ -1,15 +1,15 @@
 import './index.css';
-import {Api} from '../scripts/components/Api.js';
-import Card from '../scripts/components/Card.js';
-import FormValidator from '../scripts/components/FormValidator.js';
-import Section from '../scripts/components/Section.js';
-import PopupWithImage from '../scripts/components/PopupWithImage.js';
-import PopupWithForm from '../scripts/components/PopupWithForm.js';
-import UserInfo from '../scripts/components/UserInfo.js';
-import {initialCards} from '../scripts/utils/constants.js';
-import {validationConf} from '../scripts/utils/constants.js';
-import {configApi} from '../scripts/utils/constants.js';
-import PopupWithConfirm from '../scripts/components/PopupWithConfirm.js';
+import {Api} from '../components/Api.js';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import Section from '../components/Section.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
+import {initialCards} from '../utils/constants.js';
+import {validationConf} from '../utils/constants.js';
+import {configApi} from '../utils/constants.js';
+import PopupWithConfirm from '../components/PopupWithConfirm.js';
 
 
 const elements = document.querySelector('.elements');
@@ -41,8 +41,6 @@ popupFullscreen.setEventListeners();
 
 //Создание экземпляра класса Api
 const api = new Api(configApi);
-// console.log(api);
-// api.getInitialCards().then(dataCards => console.log(dataCards));
 
 //Присвоим переменную для получения ID пользователя
 let userId;
@@ -53,13 +51,14 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     userId = user._id;
     userInfo.setUserInfo(user);
     cardSection.renderItems(cards);
+    
   })
   .catch((err) => {
     console.log(err);
   });
 
 //Функция создания карточки
-function addNewCard(item, userId) {
+function createNewCard(item, userId) {
   const card = new Card(item, '#template-cards', (name, link) => handleCardClick(name, link), userId,
   {handleDeleteIconClick: (cardId) => {
     popupConfirmDelete.open();
@@ -69,6 +68,9 @@ function addNewCard(item, userId) {
         card.deleteCard();
         popupConfirmDelete.close();
       })
+      .catch((err) => {
+        console.log(err);
+      });
     })
   },
   likeDelete: (cardId) => {
@@ -76,12 +78,20 @@ function addNewCard(item, userId) {
     .then((data) => {
       card.setLikesCount(data)
     })
+    .catch((err) => {
+      console.log(err);
+    });
   },
   likeAdd: (cardId) => {
     api.setLike(cardId)
     .then((data) => {
       card.setLikesCount(data)
-    })}
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+    
   });
   return card.generateCard();
 };
@@ -92,7 +102,7 @@ function handleCardClick(name, link) {
 
 //Создание  нового экземпляра класса Section
 const cardSection = new Section({renderer:
-  (item) => {cardSection.addItem(addNewCard(item, userId));}
+  (item) => {cardSection.addItem(createNewCard(item, userId));}
    }, '.elements__cards');
 
 
@@ -115,7 +125,7 @@ function handleSubmitFormAddCard(formData) {
   popupFormAddCard.changeButtonText('Сохранение...');
   api.addCard(formData)
   .then((data) => {
-    cardSection.addItem(addNewCard(data, userId))
+    cardSection.addItem(createNewCard(data, userId))
     popupFormAddCard.close()
   })
   .catch((err) => {
@@ -153,10 +163,10 @@ function handleSubmitFormEditProf(formData) {
 //Открытие попапа редактирования профиля
 buttonOpenPopupProfile.addEventListener('click', () => {
   validationProfile.resetValidation();
-  popupProfileEdit.open();
   const {name, job} = userInfo.getUserInfo();
   nameInputEditProf.value = name;
   jobInputEditProf.value = job;
+  popupProfileEdit.open();
 });
 
 

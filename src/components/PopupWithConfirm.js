@@ -10,8 +10,8 @@ export default class PopupWithConfirm extends Popup {
     super.setEventListeners();
     this._submitButtonConfirm.addEventListener('click', (evt) => {
       evt.preventDefault();
-    console.log('hello')
-    this._removeCard()});
+      this._removeCard()
+    });
   }
 
   handleConfirm(deleteapi) {
