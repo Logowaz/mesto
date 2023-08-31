@@ -102,7 +102,7 @@ function handleCardClick(name, link) {
 
 //Создание  нового экземпляра класса Section
 const cardSection = new Section({renderer:
-  (item) => {cardSection.addItem(createNewCard(item, userId));}
+  (item) => {cardSection.addItems(createNewCard(item, userId));}
    }, '.elements__cards');
 
 
